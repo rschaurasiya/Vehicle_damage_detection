@@ -46,7 +46,7 @@ def predict(uploaded_file):
     global train_model
 
     if  train_model is None:
-        train_model = CarClassifierwithResNet50()
+        train_model = CarClassifierwithResNet50(num_classes=6)
         train_model.load_state_dict(torch.load("model/saved_model.pth", map_location=torch.device("cpu")))
         train_model.eval()
 
