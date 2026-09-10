@@ -31,9 +31,9 @@ class CarClassifierwithResNet50(nn.Module):
     x = self.model(x)
     return x
 
-def predict(image_path):
+def predict(uploaded_file):
 
-    image = Image.open(image_path).convert("RGB")
+    image = Image.open(uploaded_file).convert("RGB")
 
     transform = transforms.Compose([
         transforms.Resize((224,224)),
@@ -47,7 +47,7 @@ def predict(image_path):
 
     if  train_model is None:
         train_model = CarClassifierwithResNet50()
-        train_model.load_state_dict(torch.load("model\saved_model.pth", map_location=torch.device("cpu")))
+        train_model.load_state_dict(torch.load("model/saved_model.pth", map_location=torch.device("cpu")))
         train_model.eval()
 
     with torch.no_grad():
