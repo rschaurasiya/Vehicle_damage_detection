@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 train_model = None
-class_names = ['F_Breakage', 'F_Crushed', 'F_Normal', 'R_Breakage', 'R_Crushed', 'R_Normal']
+class_names = ['Front Breakage', 'Front Crushed', 'Front Normal', 'Rear Breakage', 'Rear Crushed', 'Rear Normal']
 
 
 class CarClassifierwithResNet50(nn.Module):
