@@ -2,6 +2,7 @@ from PIL import Image
 import torch
 from torch import nn
 from torchvision import models, transforms
+from pathlib import Path
 
 
 train_model = None
@@ -46,9 +47,9 @@ def predict(uploaded_file):
     global train_model
 
     if  train_model is None:
-        train_model = CarClassifierwithResNet50(num_classes=6)
-        train_model.load_state_dict(torch.load("model/saved_model.pth", map_location=torch.device("cpu")))
-        train_model.eval()
+      train_model = CarClassifierwithResNet50(num_classes=6)
+      train_model.load_state_dict(torch.load("model/saved_model.pth", map_location=torch.device("cpu")))
+      train_model.eval()
 
     with torch.no_grad():
       output = train_model(image_tensor)
