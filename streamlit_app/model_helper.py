@@ -51,15 +51,17 @@ def predict(uploaded_file):
         train_model.eval()
 
     with torch.no_grad():
-    output = train_model(image_tensor)
+      output = train_model(image_tensor)
+      _, predicted_class = torch.max(output, 1)
 
-    print("Output shape:", output.shape)
-    print("Output:", output)
+      print("OUTPUT SHAPE:", output.shape)
+      print("PREDICTED INDEX:", predicted_class.item())
+      print("NUMBER OF CLASSES:", len(class_names))
 
-    _, predicted_class = torch.max(output, 1)
+      return class_names[predicted_class.item()]
 
-    print("Predicted class index:", predicted_class.item())
-    print("Number of class names:", len(class_names))
+      print("Predicted class index:", predicted_class.item())
+      print("Number of class names:", len(class_names))
 
-    return class_names[predicted_class.item()]
+      return class_names[predicted_class.item()]
 
