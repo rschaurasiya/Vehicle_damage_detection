@@ -51,12 +51,15 @@ def predict(uploaded_file):
         train_model.eval()
 
     with torch.no_grad():
-      output = train_model(image_tensor)
-      _, predicted_class = torch.max(output,1)
-      return class_names[predicted_class.item()]
+    output = train_model(image_tensor)
 
+    print("Output shape:", output.shape)
+    print("Output:", output)
 
+    _, predicted_class = torch.max(output, 1)
 
+    print("Predicted class index:", predicted_class.item())
+    print("Number of class names:", len(class_names))
 
+    return class_names[predicted_class.item()]
 
-    return "Front Breakage"
