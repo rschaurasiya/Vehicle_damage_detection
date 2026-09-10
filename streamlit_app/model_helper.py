@@ -47,7 +47,7 @@ def predict(uploaded_file):
 
     if  train_model is None:
         train_model = CarClassifierwithResNet50()
-        train_model.load_state_dict(torch.load("../model/saved_model.pth", map_location=torch.device("cpu"))))
+        train_model.load_state_dict(torch.load("../model/saved_model.pth", map_location=torch.device("cpu")))
         train_model.eval()
 
     with torch.no_grad():
